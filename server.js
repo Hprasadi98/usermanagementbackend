@@ -3,14 +3,14 @@ const app = express();
 const cors = require('cors');
 
 const port = 3001;
-const host = '127.0.0.1';
+const host = 'localhost';
 const mongoose = require('mongoose');
 const router = require('./router');
 
 app.use(cors());
 app.use(express.json());
 
-const uri = 'mongodb+srv://hasitha:Snjusudu98*@cluster0.j8jpn05.mongodb.net/?retryWrites=true&w=majority';
+const uri = 'mongodb+srv://hasithaprasadini98:Snjusudu98@cluster0.0mkrf5m.mongodb.net/?retryWrites=true&w=majority';
 
 const connect = async() => {
     try{
