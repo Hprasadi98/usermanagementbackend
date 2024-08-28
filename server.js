@@ -3,7 +3,7 @@ const app = express();
 const cors = require('cors');
 
 const port = process.env.PORT || 3000;
-const host = 'usermanagementbackend-delta.vercel.app';
+const host = 'localhost';
 const mongoose = require('mongoose');
 const router = require('./router');
 
