@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 
-const port = 3001;
+const port = process.env.PORT || 3002;
 const host = 'localhost';
 const mongoose = require('mongoose');
 const router = require('./router');
@@ -10,7 +10,7 @@ const router = require('./router');
 app.use(cors());
 app.use(express.json());
 
-const uri = 'mongodb+srv://hasithaprasadini98:Snjusudu98@cluster0.0mkrf5m.mongodb.net/?retryWrites=true&w=majority';
+const uri = 'mongodb+srv://ums:Snjusudu98*@cluster0.l0v11.mongodb.net/';
 
 const connect = async() => {
     try{
