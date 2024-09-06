@@ -17,6 +17,10 @@ app.use(
 
 app.use(express.json());
 
+app.get('/', (req, res) => {
+    res.status(200).send('User Management Backend is up and running!');
+});
+
 app.get('/users', (req,res)=>{
     controller.getUsers((req, res, next) =>{
         res.send();
