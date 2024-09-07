@@ -11,8 +11,6 @@ app.use(cors({
 
 app.use(express.json());
 
-app.use(express.json());
-
 app.get('/', (req, res) => {
     res.status(200).send('User Management Backend is up and running!');
 });
@@ -46,11 +44,6 @@ app.post('/deleteuser', (req,res)=>{
     controller.deleteUser(req.body,(callback)=>{
         res.send(callback);
     });
-});
-
-const port = process.env.PORT || 3000;
-app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
 });
 
 module.exports = app;
