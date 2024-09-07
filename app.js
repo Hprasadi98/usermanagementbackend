@@ -4,7 +4,7 @@ const cors = require('cors');
 const controller = require('./controller');
 
 app.use(cors({
-    origin: 'https://usermanagement-roan.vercel.app/',
+    origin: 'https://usermanagement-roan.vercel.app',
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true
   }));
