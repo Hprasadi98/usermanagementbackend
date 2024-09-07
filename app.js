@@ -3,15 +3,10 @@ const app = express();
 const cors = require('cors');
 const controller = require('./controller');
 
-app.use(cors({
-    origin: 'https://usermanagement-roan.vercel.app',
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    credentials: true
-  }));
+app.use(cors());
 
 app.use(express.json());
 
-app.get('/users', (req, res) => {
 app.get('/api/users', (req, res) => {
     controller.getUsers((err, users) => {
         if (err) {
