@@ -11,11 +11,8 @@ app.use(cors({
 
 app.use(express.json());
 
-app.get('/', (req, res) => {
-    res.status(200).send('User Management Backend is up and running!');
-});
-
 app.get('/users', (req, res) => {
+app.get('/api/users', (req, res) => {
     controller.getUsers((err, users) => {
         if (err) {
             return res.status(500).send(err.message);
@@ -24,7 +21,7 @@ app.get('/users', (req, res) => {
     });
 });
 
-app.post('/createuser', (req, res) => {
+app.post('/api/createuser', (req, res) => {
     controller.addUser(req.body, (err, user) => {
         if (err) {
             return res.status(500).send(err.message);
@@ -34,13 +31,13 @@ app.post('/createuser', (req, res) => {
 });
 
 
-app.post('/updateuser', (req,res)=>{
+app.post('/api/updateuser', (req,res)=>{
     controller.updateUser(req.body, (callback)=>{
         res.send(callback);
     });
 });
 
-app.post('/deleteuser', (req,res)=>{
+app.post('/api/deleteuser', (req,res)=>{
     controller.deleteUser(req.body,(callback)=>{
         res.send(callback);
     });
