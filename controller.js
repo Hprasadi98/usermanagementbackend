@@ -1,52 +1,47 @@
 const { response } = require("express");
 const User = require("./model");
 
-const getUsers = (req, res, next) => {
-  User.find()
-    .then((response) => {
-      res.json({ response });
-    })
-    .catch((error) => {
-      res.json(error);
-    });
+const getUsers = async (req, res, next) => {
+  try {
+    const users = await User.find();
+    res.json({ users });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
 };
 
-const addUser = (req, res, next) => {
-  const user = new User({
-    id: req.body.id,
-    name: req.body.name,
-  });
-  user
-    .save()
-    .then((response) => {
-      res.json({ response });
-    })
-    .catch((error) => {
-      res.json(error);
+const addUser = async (req, res, next) => {
+  try {
+    const user = new User({
+      id: req.body.id,
+      name: req.body.name,
     });
+    const savedUser = await user.save();
+    res.status(201).json({ user: savedUser });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
 };
 
-const updateUser = (req, res, next)=>{
-    const {id, name} = req.body;
-    User.updateOne({id: id},{$set:{name:name}})
-        .then((response) => {
-            res.json({ response });
-        })
-        .catch((error) => {
-            res.json(error);
-        });
-}
+const updateUser = async (req, res, next) => {
+  try {
+    const { id, name } = req.body;
+    const response = await User.updateOne({ id: id }, { $set: { name: name } });
+    res.json({ response });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
 
-const deleteUser = (req,res,next)=>{
+const deleteUser = async (req, res, next) => {
+  try {
     const id = req.body.id;
-    User.deleteOne({id : id})
-        .then((response) => {
-            res.json({ response });
-        })
-        .catch((error) => {
-            res.json(error);
-        });
-}
+    const response = await User.deleteOne({ id: id });
+    res.json({ response });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
 
 exports.getUsers = getUsers;
 exports.addUser = addUser;
